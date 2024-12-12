@@ -1,0 +1,17 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, there is a little-known quirk related to using it with percentages and multiple values.  Consider this example:
+
+```css
+.container {
+  width: calc(50% - 10px);
+}
+```
+
+This works as expected, subtracting 10px from 50% of the parent's width. But if you try to combine calculations with different units, you might run into problems. For example:
+
+```css
+.element {
+  width: calc(50% + 2em);
+}
+```
+
+This could produce unexpected results in certain browsers, especially older ones, because they might have issues parsing and handling the combination of percentage and em units in a single `calc()` expression.

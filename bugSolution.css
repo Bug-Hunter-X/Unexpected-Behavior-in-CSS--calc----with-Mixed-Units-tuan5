@@ -1,0 +1,17 @@
+The solution is to avoid combining percentage units with other units within a single `calc()` expression.  Instead, you could break it into separate calculations.  For example, if you need to have an element's width be 50% of its parent's width plus 2em, you could separate this as follows:
+
+```css
+.element {
+  width: 50%;
+  margin-left: 2em;
+  box-sizing: border-box;
+}
+
+/*or*/
+
+.element {
+  width: calc(50% + 20px); /*Replace 'em' with a fixed pixel value for consistency*/
+}
+```
+
+In the first approach, we set the width to 50% and add the extra space using `margin-left` (or similar).  This is clearer and often preferable.  The second one is using fixed pixels to overcome inconsistent behaviour among em units, though this might limit flexibility depending on your use case.  The key is to ensure unit consistency within each `calc()` expression.
